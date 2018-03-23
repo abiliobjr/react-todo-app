@@ -2,3 +2,7 @@
     background: #cccccc;
     text-decoration: line-through;
 }
+
+.btn {
+    margin-right: 8px;
+}
