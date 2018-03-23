@@ -5,9 +5,11 @@ export default props => {
     const renderRows = () => {
         const list = props.list || []
         return list.map((todo, index) => (
-            <tr key={todo._id}>
+            <tr key={todo._id} className={todo.done ? 'done' : ''}>
                 <td>{todo.description}</td>
                 <td>
+                    <IconButton style='warning' hide={!todo.done} icon='undo' onClick={()=>props.handleMarkAsPending(todo)} > </IconButton>
+                    <IconButton style='success' hide={todo.done} icon='check' onClick={()=>props.handleMarkAsDone(todo)} > </IconButton>
                     <IconButton style='danger' icon='trash-o' onClick={()=>props.handleRemove(todo)} > </IconButton>
                 </td>
             </tr>
@@ -18,7 +20,8 @@ export default props => {
         <table className="table">
             <thead>
                 <tr>
-                    Descrição
+                    <th>Descrição</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
